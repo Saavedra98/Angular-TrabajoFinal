@@ -1,0 +1,53 @@
+<app-menu></app-menu>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="titulo">Registrarse</h1>
+        </div>
+
+
+
+        <div class="card-body">
+
+            <form [formGroup]="formRegistrar">
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombreControl">
+                </div>
+    
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" class="form-control" formControlName="emailControl">
+                </div>
+    
+                <div class="mb-3">
+                    <label class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" formControlName="contraseñaControl">
+                </div>
+    
+                <div class="mb-3">
+                    <label class="form-label">Rol:</label>
+                    <select class="form-select ">
+                        <option value="1">Admin</option>
+                        <option value="2">Usuario</option>
+                    </select>
+                </div>
+    
+                <div class="mb-3">
+                    <button type="button" class="registrar btn  d-flex mx-auto" (click)="registrar()">Registrarse</button>
+                </div>
+
+            </form>
+
+            
+
+
+        </div>
+
+
+
+    </div>
+</div>

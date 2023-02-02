@@ -1,0 +1,18 @@
+.menu{
+    background-color: #97004f;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.texto{
+    font-size: 15px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 2px 5px;
+}
+
+.separador{
+    border-right: 2px solid white;
+}

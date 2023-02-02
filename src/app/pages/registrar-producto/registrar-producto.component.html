@@ -1,0 +1,50 @@
+
+<app-menu-log-out></app-menu-log-out>
+
+<div class="container">
+
+    <h1 class="titulo">Nuevo Producto</h1>
+
+    <div class="formulario ">
+
+        <form [formGroup]="formRegistrar">
+            <div class="mb-3 d-flex">
+                <label class="form-label">Nombre:</label>
+                <input type="text" class="form-control" formControlName="nombreControl">
+            </div>
+            <div class="mb-3 d-flex">
+                <label class="form-label">Descripcion:</label>
+                <textarea class="form-control" rows="4" style="resize: none;" formControlName="descripcionControl"></textarea>
+            </div>
+    
+            <div class="columnas">
+                <div class="mb-3 d-flex">
+                    <label class="form-label costo">Costo:</label>
+                    <input type="text" class="form-control" formControlName="costoControl">
+                </div>
+                <div class="mb-3 d-flex">
+                    <label class="form-label">Oferta:</label>
+                    <input type="text" class="form-control" formControlName="ofertaControl">
+                </div>
+            </div>
+    
+            <div class="mb-3 d-flex">
+                <label class="form-label">Imagen:</label>
+                <input type="text" class="form-control" formControlName="imagenControl">
+            </div>
+            
+            <div class="mb-3 d-flex">
+                <button class="btn boton btn-primary px-5 py-2 d-flex mx-auto" (click)="registar()">Registrar Producto</button>
+            </div>
+
+        </form>
+
+
+
+
+        
+
+
+    </div>
+
+</div>

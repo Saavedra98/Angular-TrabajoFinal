@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+
+
+
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="titulo">Iniciar Sesión</h1>
+        </div>
+        <div class="card-body">
+
+            <form [formGroup]="formLogin">
+                <div class="mb-3">
+                    <label class="form-label">Usuario:</label>
+                    <input type="text" class="form-control" formControlName="usuarioControl">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" formControlName="contraseñaControl">
+                </div>
+    
+                <div class="mb-3">
+                    <button type="button" class="ingresar btn  d-flex mx-auto" (click)="login()">Ingresar</button>
+                </div>
+            </form>
+
+
+            
+
+        </div>
+    </div>
+
+
+
+
+</div>
