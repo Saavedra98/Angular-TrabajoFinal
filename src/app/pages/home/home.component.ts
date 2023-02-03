@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProdServiceService } from 'src/app/services/prod-service.service';
+import { Producto } from 'src/app/interfaces/producto';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,8 @@ export class HomeComponent implements OnInit{
     
   }
 
-  ver(){
-    this.router.navigate(['/detalle'])
+  ver(id:string){
+    this.router.navigate(['/detalle', id])
   }
 
 }

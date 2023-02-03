@@ -21,7 +21,7 @@
                         <img class="imagen-producto" src={{i.imagenControl}} >
                       <p class="card-text precio">S/.{{i.costoControl }}.00</p>
                       <button type="button" class="registrar btn  d-flex mx-auto mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar a Carrito</button>
-                      <button type="button" class="registrar btn  d-flex mx-auto" (click)="ver()">Ver más</button>
+                      <button type="button" class="registrar btn  d-flex mx-auto" (click)="ver(i.id)">Ver más</button>
                     </div>
                   </div>
             </div>
