@@ -2,6 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { ProdServiceService } from 'src/app/services/prod-service.service';
 
 
 @Component({
@@ -11,18 +12,28 @@ import swal from 'sweetalert2';
 })
 export class RegistrarProductoComponent {
 
-  constructor(private router: Router) { }
+  formRegistrar!: FormGroup;
 
-  formRegistrar = new FormGroup({
-    nombreControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    descripcionControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    costoControl: new FormControl('', [Validators.required, ]),
-    ofertaControl: new FormControl('', [Validators.required, ]),
-    imagenControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
-  })
+  constructor(private router: Router, private dataService: ProdServiceService) { 
+    this.formRegistrar = new FormGroup({
+      nombreControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      descripcionControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      costoControl: new FormControl('', [Validators.required, ]),
+      ofertaControl: new FormControl('', [Validators.required, ]),
+      imagenControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    })
+  
 
+  }
+
+  
   registar(){
     if(this.formRegistrar.valid){
+
+      console.log(this.formRegistrar.value);
+      const response = this.dataService.addProducto(this.formRegistrar.value);
+      console.log(response)
+
       swal.fire({
         icon: 'success',
         title: 'Producto Registrado Correctamente',

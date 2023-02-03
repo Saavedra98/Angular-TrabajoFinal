@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import swal from 'sweetalert2';
 
 
@@ -11,23 +12,59 @@ import swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: UsuarioService) { }
 
   formLogin = new FormGroup({
     usuarioControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
     contraseñaControl: new FormControl('', [Validators.required, Validators.minLength(4)]),
   })
 
+  persona: any[] = [];
+  datos: any[] = [];
+
+
   ngOnInit(): void {
+    this.dataService.getPersona().subscribe(res => {
+      this.persona = res;
+      // console.log(this.persona);
+      for (let i of this.persona) {
+        this.datos.push({ email: i.emailControl, contraseña: i.contraseñaControl, rol: i.rolControl, 
+          nombre: i.nombreControl })
+      }
+
+
+      console.log('*******');
+      console.log(this.datos);
+      console.log('*******');
+
+    })
 
   }
 
+  tipo=0;
+  valor=false;
+  
   login() {
-    console.log(this.formLogin.valid);
 
-    if (this.formLogin.valid) {
+    this.tipo=0;
+    this.valor=false;
 
-      if(this.formLogin.value.usuarioControl == 'admin' && this.formLogin.value.contraseñaControl == '123456'){
+    // console.log(this.formLogin.value);
+    // console.log('Antes de igualar: ---------')
+    // console.log(  'rol:' + this.tipo + '------------------' + 'Coincide:'+  this.valor + '--------------')
+
+    for (let i of this.datos) {
+      if (i.email == this.formLogin.get('usuarioControl')?.value && i.contraseña == this.formLogin.get('contraseñaControl')?.value) {
+        this.tipo=i.rol;
+        this.valor=true;
+
+        localStorage.setItem('nombre', i.nombre)
+      }
+    }
+
+    if(this.valor==true){
+      
+      if(this.tipo==1){
         swal.fire({
           icon: 'success',
           title: 'Bienvenido Admin',
@@ -44,8 +81,7 @@ export class LoginComponent implements OnInit {
         })
         this.router.navigate(['/home'])
       }
-      
-    } else {
+    }else{
       swal.fire({
         icon: 'error',
         title: 'Usuario Incorrecto',
@@ -55,6 +91,10 @@ export class LoginComponent implements OnInit {
       })
     }
 
+
+    // console.log('Despues de igualar: ---------')
+    // console.log( 'rol:' + this.tipo + '------------------' + 'Coincide:'+  this.valor + '--------------')
+    
   }
 
 }
